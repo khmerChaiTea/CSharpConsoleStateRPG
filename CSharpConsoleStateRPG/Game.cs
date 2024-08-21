@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSharpConsoleStateRPG
 {
-    internal class Game
+    class Game
     {
         // Variable
         private bool end;
@@ -16,6 +16,8 @@ namespace CSharpConsoleStateRPG
             get { return this.end; }
             set { this.end = value; }
         }
+
+        private Gui gui;
 
         private Stack<State> states;
 
@@ -30,7 +32,12 @@ namespace CSharpConsoleStateRPG
             this.states = new Stack<State>();
 
             // Push the first state
-            this.states.Push(new State(this.states));
+            this.states.Push(new StateMainMenu(this.states));
+        }
+
+        private void InitGui()
+        {
+            this.gui = new Gui();
         }
 
         // Constructor and Destructor
@@ -38,12 +45,13 @@ namespace CSharpConsoleStateRPG
         {
             this.InitVariables();
             this.InitStates();
-
-            Console.WriteLine("Hello from the Game class!");
+            this.InitGui();
         }
 
         public void Run()
         {
+            this.gui.Render();
+
             while (this.end == false)
             {
                 Console.WriteLine("Write a number: ");

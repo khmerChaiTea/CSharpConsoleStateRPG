@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace CSharpConsoleStateRPG
 {
-    internal class State
+    class StateMainMenu 
+        : State
     {
-        Stack<State> states;
-        public State(Stack<State> states)
+        public StateMainMenu(Stack<State> states)
+            : base(states)
         {
-            this.states = states;
+
         }
     }
 }
