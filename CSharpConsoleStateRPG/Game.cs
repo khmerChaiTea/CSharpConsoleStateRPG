@@ -31,7 +31,6 @@ namespace CSharpConsoleStateRPG
 
             // Push the first state
             this.states.Push(new StateMainMenu(this.states));
-            this.states.Push(new StateGame(this.states));
         }
 
         // Constructor and Destructor
