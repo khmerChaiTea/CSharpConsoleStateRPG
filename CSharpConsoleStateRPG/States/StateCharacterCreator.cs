@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,12 @@ namespace CSharpConsoleStateRPG
     class StateCharacterCreator
         : State
     {
-        public StateCharacterCreator(Stack<State> states) : base(states)
-        {
+        protected ArrayList characterList;
 
+        public StateCharacterCreator(Stack<State> states, ArrayList _characterList)
+            : base(states)
+        {
+            this.characterList = _characterList;
         }
 
         public void ProcessInput(int input)
@@ -20,6 +24,13 @@ namespace CSharpConsoleStateRPG
             {
                 case -1:
                     this.end = true;
+                    break;
+
+                case 1:
+                    this.characterList.Add(new Character("Headturna"));
+                    this.characterList.Add(new Character("Bob"));
+                    this.characterList.Add(new Character("Sven"));
+                    Console.Write(Gui.Announcement("Character created"));
                     break;
 
                 default:

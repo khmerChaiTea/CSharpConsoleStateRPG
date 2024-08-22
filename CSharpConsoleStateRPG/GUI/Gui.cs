@@ -29,6 +29,13 @@ namespace CSharpConsoleStateRPG
             return str;
         }
 
+        public static String Announcement(String str)
+        {
+            str = String.Format(" (~) ({0})!\n",  str);
+
+            return str;
+        }
+
         public static String GetInput(String str)
         {
             str = String.Format(" - {0}: ", str);

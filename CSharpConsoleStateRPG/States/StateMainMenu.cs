@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +10,12 @@ namespace CSharpConsoleStateRPG
     class StateMainMenu 
         : State
     {
-        public StateMainMenu(Stack<State> states)
+        protected ArrayList characterList;
+
+        public StateMainMenu(Stack<State> states, ArrayList _characterList)
             : base(states)
         {
-            
+            this.characterList = _characterList;
         }
 
         public void ProcessInput(int input)
@@ -28,7 +31,11 @@ namespace CSharpConsoleStateRPG
                     break;
 
                 case 2:
-                    this.states.Push(new StateCharacterCreator(this.states));
+                    this.states.Push(new StateCharacterCreator(this.states, this.characterList));
+                    break;
+
+                case 3:
+                    Console.WriteLine(this.characterList.Count);
                     break;
 
                 default:
@@ -42,9 +49,10 @@ namespace CSharpConsoleStateRPG
             Console.Write(Gui.MenuTitle("Main Menu"));
             Console.Write(Gui.MenuOption(1, "New Game"));
             Console.Write(Gui.MenuOption(2, "Character Creator"));
+            Console.Write(Gui.MenuOption(3, "List Characters"));
             Console.Write(Gui.MenuOption(-1, "Exit"));
 
-            Console.WriteLine("Write a number: (Main Menu)");
+            Gui.GetInput("Input");
             int input = Convert.ToInt32(Console.ReadLine());
 
             this.ProcessInput(input);
