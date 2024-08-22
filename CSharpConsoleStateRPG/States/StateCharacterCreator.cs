@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CSharpConsoleStateRPG
 {
-    class StateGame
+    class StateCharacterCreator
         : State
     {
-        public StateGame(Stack<State> states) : base(states)
+        public StateCharacterCreator(Stack<State> states) : base(states)
         {
-            
+
         }
 
         public void ProcessInput(int input)
@@ -30,11 +30,12 @@ namespace CSharpConsoleStateRPG
 
         override public void UpDate()
         {
-            Console.Write(Gui.MenuTitle("Game State"));
-            Console.Write(Gui.MenuOption(1, "Create Character"));
+            Console.Write(Gui.MenuTitle("Character Creator"));
+            Console.Write(Gui.MenuOption(1, "New Character"));
+            Console.Write(Gui.MenuOption(2, "Edit Character"));
+            Console.Write(Gui.MenuOption(3, "Delete Character"));
             Console.Write(Gui.MenuOption(-1, "Exit"));
 
-            Gui.GetInput("Input");
             Gui.GetInput("Input");
             int input = Convert.ToInt32(Console.ReadLine());
 

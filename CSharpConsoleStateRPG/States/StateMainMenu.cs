@@ -9,27 +9,45 @@ namespace CSharpConsoleStateRPG
     class StateMainMenu 
         : State
     {
-        Character character;
-
         public StateMainMenu(Stack<State> states)
             : base(states)
         {
-            this.character = new Character("Head");
+            
+        }
+
+        public void ProcessInput(int input)
+        {
+            switch (input)
+            {
+                case -1:
+                    this.end = true;
+                    break;
+
+                case 1:
+
+                    break;
+
+                case 2:
+                    this.states.Push(new StateCharacterCreator(this.states));
+                    break;
+
+                default:
+                    break;
+
+            }
         }
 
         override public void UpDate()
         {
             Console.Write(Gui.MenuTitle("Main Menu"));
-            Console.Write(Gui.MenuOption(0, "Create Character"));
+            Console.Write(Gui.MenuOption(1, "New Game"));
+            Console.Write(Gui.MenuOption(2, "Character Creator"));
             Console.Write(Gui.MenuOption(-1, "Exit"));
 
-            Console.WriteLine(character.ToString());
-
             Console.WriteLine("Write a number: (Main Menu)");
-            int number = Convert.ToInt32(Console.ReadLine());
+            int input = Convert.ToInt32(Console.ReadLine());
 
-            if (number < 0)
-                this.end = true;
+            this.ProcessInput(input);
         }
     }
 }
