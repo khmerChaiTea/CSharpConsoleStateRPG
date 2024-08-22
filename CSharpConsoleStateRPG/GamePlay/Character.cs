@@ -34,6 +34,11 @@ namespace CSharpConsoleStateRPG
         // General
         private int gold = 100;
 
+        public String Name()
+        {
+            return this.name;
+        }
+
         private void CalculateExp()
         {
             this.expMax = this.level * 100;
@@ -56,9 +61,16 @@ namespace CSharpConsoleStateRPG
             this.description = description;
         }
 
-        public override string ToString()
+        public override String ToString()
         {
-            return this.name;
+            String str = 
+                $"Name:\t\t{this.name}\n" +
+                $"Description:\t{this.description}\n" +
+                $"Level:\t\t{this.level}\n" +
+                $"Attribute:\t{this.attributePoints}\n" +
+                $"Exp:\t\t{this.exp}/{this.expMax}\n";
+
+            return str;
         }
     }
 }

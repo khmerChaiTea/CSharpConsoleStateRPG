@@ -10,12 +10,12 @@ namespace CSharpConsoleStateRPG
     class StateGame
         : State
     {
-        protected ArrayList characterList;
+        protected Character character;
 
-        public StateGame(Stack<State> states, ArrayList _characterList)
+        public StateGame(Stack<State> states, Character activeCharacter)
             : base(states)
         {
-            this.characterList = _characterList;
+            this.character = activeCharacter;
         }
 
         public void ProcessInput(int input)
@@ -24,6 +24,10 @@ namespace CSharpConsoleStateRPG
             {
                 case -1:
                     this.end = true;
+                    break;
+
+                case 1:
+                    Console.WriteLine(this.character.ToString());
                     break;
 
                 default:
@@ -35,7 +39,7 @@ namespace CSharpConsoleStateRPG
         override public void UpDate()
         {
             Gui.MenuTitle("Game State");
-            Gui.MenuOption(1, "Create Character");
+            Gui.MenuOption(1, "Character Stats");
             Gui.MenuOption(-1, "Exit");
 
             int input = Gui.GetInputInt("Input");

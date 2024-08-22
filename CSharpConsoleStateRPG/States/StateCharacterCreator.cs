@@ -18,6 +18,7 @@ namespace CSharpConsoleStateRPG
         {
             String name = "";
             String description = "";
+
             Gui.GetInput("Input character name");
             name = Console.ReadLine();
             Gui.GetInput("Input description for character");
@@ -48,7 +49,6 @@ namespace CSharpConsoleStateRPG
 
                 default:
                     break;
-
             }
         }
 
