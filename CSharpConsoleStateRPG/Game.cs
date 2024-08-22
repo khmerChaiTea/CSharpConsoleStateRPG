@@ -17,8 +17,6 @@ namespace CSharpConsoleStateRPG
             set { this.end = value; }
         }
 
-        private Gui gui;
-
         private Stack<State> states;
 
         // Private functions
@@ -33,11 +31,7 @@ namespace CSharpConsoleStateRPG
 
             // Push the first state
             this.states.Push(new StateMainMenu(this.states));
-        }
-
-        private void InitGui()
-        {
-            this.gui = new Gui();
+            this.states.Push(new StateGame(this.states));
         }
 
         // Constructor and Destructor
@@ -45,22 +39,17 @@ namespace CSharpConsoleStateRPG
         {
             this.InitVariables();
             this.InitStates();
-            this.InitGui();
         }
 
         public void Run()
         {
-            this.gui.Render();
 
-            while (this.end == false)
+            while (this.states.Count > 0)
             {
-                Console.WriteLine("Write a number: ");
-                int number =  Convert.ToInt32(Console.ReadLine());
+                this.states.Peek().UpDate();
 
-                if (number < 0)
-                    this.end = true;
-                else
-                    Console.WriteLine("You inputted: " + number);
+                if (this.states.Peek().RequestEnd())
+                this.states.Pop();
             }
 
             Console.WriteLine("Ending Game...");

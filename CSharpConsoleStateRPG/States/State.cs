@@ -8,10 +8,21 @@ namespace CSharpConsoleStateRPG
 {
     class State
     {
-        Stack<State> states;
+        protected Stack<State> states;
+        protected bool end = false;
         public State(Stack<State> states)
         {
             this.states = states;
+        }
+
+        public bool RequestEnd()
+        {
+            return this.end;
+        }
+
+        virtual public void UpDate()
+        {
+
         }
     }
 }

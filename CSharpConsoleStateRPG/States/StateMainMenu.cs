@@ -14,5 +14,14 @@ namespace CSharpConsoleStateRPG
         {
 
         }
+
+        override public void UpDate()
+        {
+            Console.WriteLine("Write a number: (Main Menu)");
+            int number = Convert.ToInt32(Console.ReadLine());
+
+            if (number < 0)
+                this.end = true;
+        }
     }
 }
