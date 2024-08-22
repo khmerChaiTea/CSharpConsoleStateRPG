@@ -11,7 +11,7 @@ namespace CSharpConsoleStateRPG
     {
         public StateGame(Stack<State> states) : base(states)
         {
-
+            
         }
 
         override public void UpDate()
