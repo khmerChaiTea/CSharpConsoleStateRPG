@@ -10,7 +10,23 @@ namespace CSharpConsoleStateRPG
     class StateCharacterCreator
         : State
     {
+        // Variables
         protected ArrayList characterList;
+
+        // Private functions
+        private void CreateCharacter()
+        {
+            String name = "";
+            String description = "";
+            Gui.GetInput("Input character name: ");
+            name = Console.ReadLine();
+            Gui.GetInput("Input description for character: ");
+            description = Console.ReadLine();
+
+            this.characterList.Add(new Character(name, description));
+
+            Gui.Announcement("Character created");
+        }
 
         public StateCharacterCreator(Stack<State> states, ArrayList _characterList)
             : base(states)
@@ -27,10 +43,7 @@ namespace CSharpConsoleStateRPG
                     break;
 
                 case 1:
-                    this.characterList.Add(new Character("Headturna"));
-                    this.characterList.Add(new Character("Bob"));
-                    this.characterList.Add(new Character("Sven"));
-                    Console.Write(Gui.Announcement("Character created"));
+                    this.CreateCharacter();
                     break;
 
                 default:
@@ -41,11 +54,11 @@ namespace CSharpConsoleStateRPG
 
         override public void UpDate()
         {
-            Console.Write(Gui.MenuTitle("Character Creator"));
-            Console.Write(Gui.MenuOption(1, "New Character"));
-            Console.Write(Gui.MenuOption(2, "Edit Character"));
-            Console.Write(Gui.MenuOption(3, "Delete Character"));
-            Console.Write(Gui.MenuOption(-1, "Exit"));
+            Gui.MenuTitle("Character Creator");
+            Gui.MenuOption(1, "New Character");
+            Gui.MenuOption(2, "Edit Character");
+            Gui.MenuOption(3, "Delete Character");
+            Gui.MenuOption(-1, "Exit");
 
             Gui.GetInput("Input");
             int input = Convert.ToInt32(Console.ReadLine());

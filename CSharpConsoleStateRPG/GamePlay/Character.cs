@@ -10,6 +10,7 @@ namespace CSharpConsoleStateRPG
     {
         // Core
         private String name = "";
+        private String description = "";
         private int level = 0;
         private int attributePoints = 3;
         private int exp = 0;
@@ -47,11 +48,12 @@ namespace CSharpConsoleStateRPG
             this.defence = this.agility * 2;
         }
 
-        public Character(String name)
+        public Character(String name, string description)
         {
             this.CalculateStats();
 
             this.name = name;
+            this.description = description;
         }
 
         public override string ToString()

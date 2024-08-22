@@ -34,9 +34,9 @@ namespace CSharpConsoleStateRPG
 
         override public void UpDate()
         {
-            Console.Write(Gui.MenuTitle("Game State"));
-            Console.Write(Gui.MenuOption(1, "Create Character"));
-            Console.Write(Gui.MenuOption(-1, "Exit"));
+            Gui.MenuTitle("Game State");
+            Gui.MenuOption(1, "Create Character");
+            Gui.MenuOption(-1, "Exit");
 
             Gui.GetInput("Input");
             int input = Convert.ToInt32(Console.ReadLine());

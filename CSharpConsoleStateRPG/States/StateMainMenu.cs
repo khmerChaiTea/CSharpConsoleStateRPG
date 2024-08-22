@@ -46,11 +46,11 @@ namespace CSharpConsoleStateRPG
 
         override public void UpDate()
         {
-            Console.Write(Gui.MenuTitle("Main Menu"));
-            Console.Write(Gui.MenuOption(1, "New Game"));
-            Console.Write(Gui.MenuOption(2, "Character Creator"));
-            Console.Write(Gui.MenuOption(3, "List Characters"));
-            Console.Write(Gui.MenuOption(-1, "Exit"));
+            Gui.MenuTitle("Main Menu");
+            Gui.MenuOption(1, "New Game");
+            Gui.MenuOption(2, "Character Creator");
+            Gui.MenuOption(3, "List Characters");
+            Gui.MenuOption(-1, "Exit");
 
             Gui.GetInput("Input");
             int input = Convert.ToInt32(Console.ReadLine());
