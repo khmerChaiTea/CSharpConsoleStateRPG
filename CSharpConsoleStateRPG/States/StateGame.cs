@@ -38,8 +38,7 @@ namespace CSharpConsoleStateRPG
             Gui.MenuOption(1, "Create Character");
             Gui.MenuOption(-1, "Exit");
 
-            Gui.GetInput("Input");
-            int input = Convert.ToInt32(Console.ReadLine());
+            int input = Gui.GetInputInt("Input");
 
             this.ProcessInput(input);
         }
