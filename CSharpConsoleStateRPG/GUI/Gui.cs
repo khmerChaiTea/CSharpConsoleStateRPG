@@ -51,23 +51,22 @@ namespace CSharpConsoleStateRPG
 
         public static int GetInputInt(string message)
         {
-            int input = -10;
+            Nullable<int> input = null;
 
-            while (input == -10)
+            while (input == null)
             {
                 try
                 {
-                    Gui.GetInput("Input");
+                    Gui.GetInput(message);
                     input = Convert.ToInt32(Console.ReadLine());
                 }
                 catch (Exception e) // Error
-                {
-                    input = -10;
+                {                    
                     Console.WriteLine(e.Message);
                 }
             }
 
-            return input;
+            return input.Value;
         }
     }
 }

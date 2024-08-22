@@ -18,9 +18,9 @@ namespace CSharpConsoleStateRPG
         {
             String name = "";
             String description = "";
-            Gui.GetInput("Input character name: ");
+            Gui.GetInput("Input character name");
             name = Console.ReadLine();
-            Gui.GetInput("Input description for character: ");
+            Gui.GetInput("Input description for character");
             description = Console.ReadLine();
 
             this.characterList.Add(new Character(name, description));

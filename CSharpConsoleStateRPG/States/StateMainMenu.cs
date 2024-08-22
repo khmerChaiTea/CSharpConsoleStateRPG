@@ -11,11 +11,13 @@ namespace CSharpConsoleStateRPG
         : State
     {
         protected ArrayList characterList;
+        protected Character activeCharacter;
 
         public StateMainMenu(Stack<State> states, ArrayList _characterList)
             : base(states)
         {
             this.characterList = _characterList;
+            this.activeCharacter = null;
         }
 
         public void ProcessInput(int input)
@@ -59,15 +61,38 @@ namespace CSharpConsoleStateRPG
 
         public void StartNewGame()
         {
+            // While the activeCharacter variable is null, one cannot start the game
+            if (this.activeCharacter == null)   // Error
+            {
+                Gui.Announcement("There is no Active Character selected! Please select one before starting the game.");
+            }
+            else // Start
+            {
 
+            }
         }
 
         public void SelectCharacter()
         {
-            foreach (var character in this.characterList)
+            // Print all characters to select
+            for (int i = 0; i < this.characterList.Count; i++)
             {
-                Console.WriteLine(character.ToString());
+                Console.WriteLine(i + ": " + characterList[i].ToString());
             }
+
+            int choice = Gui.GetInputInt("Character selection");
+
+            try
+            {
+                this.activeCharacter = (Character)this.characterList[choice];
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            if (this.activeCharacter != null)
+                Gui.Announcement($"The character {this.activeCharacter.ToString()} is selected.");
         }
     }
 }
