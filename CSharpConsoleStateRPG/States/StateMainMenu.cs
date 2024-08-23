@@ -49,7 +49,9 @@ namespace CSharpConsoleStateRPG
         override public void UpDate()
         {
             if (this.activeCharacter != null)
-                Console.WriteLine("Active character: " + this.activeCharacter.Name() + "\n");
+            {
+                Console.WriteLine(this.activeCharacter.ToStringBanner() + "\n");
+            }
 
             Gui.MenuTitle("Main Menu");
             Gui.MenuOption(1, "New Game");

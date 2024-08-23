@@ -61,11 +61,32 @@ namespace CSharpConsoleStateRPG
             this.description = description;
         }
 
+        public String ToStringBanner()
+        {
+            String str =
+                "Active Character\n" +
+                "=============================================\n" +
+                $"[ {this.name} | Lv: {this.level} {Gui.ProgressBar(this.exp, this.expMax, 10)} ]\n" +
+                "=============================================\n";
+
+            return str;
+        }
+
         public override String ToString()
         {
             String str = 
                 $"Name:\t\t{this.name}\n" +
-                $"Description:\t{this.description}\n" +
+                $"Level:\t\t{this.level}\n" +
+                $"Attribute:\t{this.attributePoints}\n" +
+                $"Exp:\t\t{this.exp}/{this.expMax} {Gui.ProgressBar(30, 50, 10)}\n";
+
+            return str;
+        }
+
+        public String ToStringDetailed()
+        {
+            String str =
+                $"Name:\t\t{this.name}\n" +
                 $"Level:\t\t{this.level}\n" +
                 $"Attribute:\t{this.attributePoints}\n" +
                 $"Exp:\t\t{this.exp}/{this.expMax}\n";
